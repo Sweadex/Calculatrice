@@ -4,14 +4,9 @@
 *.jpeg
 *.gif
 *.bmp
-*.ico
 *.svg
 *.tiff
 *.tif
-
-# Ressources
-*.res
-*.rc
 
 # Executable
 *.exe

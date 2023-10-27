@@ -31,6 +31,7 @@ Bienvenue dans le projet de calculatrice en C++. Cette calculatrice vous permet 
 7. Racine carrée : `sqrt16` renverra `4`.
 8. Logarithme népérien : `ln(e)` renverra `1`.
 9. Logarithme décimal : `log100` renverra `10`.
+10. Résultats précedant : `2+2` renverra `4` puis `ans*2` renverra `8`.
 
 
 N'oubliez pas d'utiliser des parenthèses pour spécifier la priorité des opérations. Les multiplications peuvent être implicite, par exemple : `(2+4)4` et `(2+4)*4` sont correct, ce qui renverra `20`.
@@ -41,6 +42,6 @@ La calculatrice est conçue pour gérer diverses erreurs, telles que la division
 
 ## Contributions
 
-Ce projet a été créé par Sweadex. Si vous souhaitez contribuer au développement de la calculatrice en C++, n'hésitez pas à ouvrir une issue ou à envoyer une demande de tirage (pull request).
+Ce projet a été créé par Sweadex. Si vous souhaitez contribuer au développement de la calculatrice en C++, n'hésitez pas à ouvrir une issue.
 
 Amusez-vous bien à utiliser la calculatrice en C++ !

@@ -1,22 +1,20 @@
 # Calculatrice en C++
 
-Bienvenue dans le projet de calculatrice en C++. Cette calculatrice vous permet d'effectuer des opérations mathématiques de base en utilisant des opérateurs +, -, *, /, ^ ou les fonctions comme exp, ln, log en prenant en compte les parenthèses pour gérer la priorité des opérations. Certaine constante comme `pi` et `e`sont aussi disponible.
+Bienvenue dans le projet de calculatrice en C++. Cette calculatrice vous permet d'effectuer des opérations mathématiques de base en utilisant des opérateurs +, -, *, /, ^, ainsi que des fonctions telles que sqrt, exp, ln, log, en prenant en compte les parenthèses pour gérer la priorité des opérations. Certaines constantes telles que `pi` et `e` sont également disponibles.
 
 ## Comment utiliser la calculatrice
 
-1. Clonez ce référentiel sur votre machine locale :
-   
-   ```
-   git clone https://github.com/Sweadex/Calculatrice.git
-   ```
+1. Téléchargez et exécutez le programme "Calculatrice.exe" se trouvant dans la dernière Releases :
 
-2. Exécutez le programme "Calculatrice.exe" se trouvant dans le dossier "bin/":
-
-3. Vous pouvez maintenant entrer des expressions mathématiques, telles que `(2+3)*4`, et obtenir le résultat.
+2. Vous pouvez maintenant entrer des expressions mathématiques, telles que `(2+3)*4`, et obtenir le résultat.
 
 ## Fonctionnalités
 
-- Prise en charge des opérations mathématiques de base : addition, soustraction, multiplication et division.
+- Prise en charge des opérations mathématiques de base : addition, soustraction, multiplication, division et puissance.
+- Prise en charge des fonctions mathématiques de base : racine carrée, exponentielle, logarithme népérien et logarithme décimal.
+- Prise en charge des constantes mathématiques de base : `pi` et `e`.
+- Possibilité d'inclure le dernier résultat obtenu dans la prochaine opération avec `ans`.
+- Gestion des multiplications implicites.
 - Gestion des parenthèses pour définir la priorité des opérations.
 - Gestion des erreurs, y compris la division par zéro et les entrées incorrectes.
 
@@ -31,10 +29,10 @@ Bienvenue dans le projet de calculatrice en C++. Cette calculatrice vous permet 
 7. Racine carrée : `sqrt16` renverra `4`.
 8. Logarithme népérien : `ln(e)` renverra `1`.
 9. Logarithme décimal : `log100` renverra `10`.
-10. Résultats précedant : `2+2` renverra `4` puis `ans*2` renverra `8`.
+10. Résultats précédents : `2+2` renverra `4` puis `ans*2` renverra `8`.
 
 
-N'oubliez pas d'utiliser des parenthèses pour spécifier la priorité des opérations. Les multiplications peuvent être implicite, par exemple : `(2+4)4` et `(2+4)*4` sont correct, ce qui renverra `20`.
+N'oubliez pas d'utiliser des parenthèses pour spécifier la priorité des opérations. Les multiplications peuvent être implicites, par exemple : `(2+4)4` et `(2+4)*4` sont correctes, ce qui renverra `20`.
 
 ## Gestion des erreurs
 

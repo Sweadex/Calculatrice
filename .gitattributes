@@ -1,3 +1,3 @@
-.rc filter=lfs diff=lfs merge=lfs -text
-.res filter=lfs diff=lfs merge=lfs -text
-.ico filter=lfs diff=lfs merge=lfs -text
+*.rc filter=lfs diff=lfs merge=lfs -text
+*.res filter=lfs diff=lfs merge=lfs -text
+*.ico filter=lfs diff=lfs merge=lfs -text

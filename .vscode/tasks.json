@@ -5,6 +5,8 @@
             "label": "C/C++: g++.exe build active file",
             "command": "g++",
             "args": [
+                "-I",
+                "C:\\MinGW\\include",
                 "${file}",
                 "-o",
                 "${workspaceFolder}\\bin\\Calculatrice.exe",

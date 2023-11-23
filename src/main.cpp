@@ -70,6 +70,7 @@ void multiplication_implicite(const uint8_t &position, vector<char> &operator_li
                 }
                 else if (calc_input[i + 1] == '(')
                     i++;
+                else break;
             }
             else
                 break;
@@ -153,10 +154,10 @@ double calc(string &calc_input, double &ans)
                     operator_list.push_back('^');
                     priorite_list.push_back(priorite + 2);
                     i += 2;
+                    break;
                 }
             }
-            else
-                multiplication_implicite(APRES, operator_list, priorite_list, calc_input, priorite, i);
+            multiplication_implicite(APRES, operator_list, priorite_list, calc_input, priorite, i);
             break;
         case 'p':
             multiplication_implicite(AVANT, operator_list, priorite_list, calc_input, priorite, i);
@@ -175,32 +176,41 @@ double calc(string &calc_input, double &ans)
             multiplication_implicite(APRES, operator_list, priorite_list, calc_input, priorite, i);
             break;
         case 's':
-            multiplication_implicite(AVANT, operator_list, priorite_list, calc_input, priorite, i);
-            if (i + 3 < calc_input_len)
-            {
-                if (calc_input.substr(i, 4) == "sqrt")
-                {
-                    num_list.push_back(2);
-                    operator_list.push_back(SQRT);
-                    priorite_list.push_back(priorite + 2);
-                    i += 3;
-                }
-                else
-                    throw runtime_error("Valeur entrée est incorrect !");
-            }
-            else
-                throw runtime_error("Valeur entrée est incorrect !");
-            break;
-        case 'l':
-            multiplication_implicite(AVANT, operator_list, priorite_list, calc_input, priorite, i);
             if (i + 2 < calc_input_len)
             {
+                multiplication_implicite(AVANT, operator_list, priorite_list, calc_input, priorite, i);
+                if (calc_input.substr(i, 3) == "sin")
+                {
+                    i += 2;
+                    num_list.push_back(sin(sous_calc(calc_input, ans, i)));
+                    if (calc_input[i] == ')')
+                        multiplication_implicite(APRES, operator_list, priorite_list, calc_input, priorite, i);
+                    break;
+                } else if (i + 3 < calc_input_len)
+                {
+                    if (calc_input.substr(i, 4) == "sqrt")
+                    {
+                        num_list.push_back(2);
+                        operator_list.push_back(SQRT);
+                        priorite_list.push_back(priorite + 2);
+                        i += 3;
+                        break;
+                    }
+                }
+            }
+            throw runtime_error("Valeur entrée est incorrect !");
+            break;
+        case 'l':
+            if (i + 2 < calc_input_len)
+            {
+                multiplication_implicite(AVANT, operator_list, priorite_list, calc_input, priorite, i);
                 if (calc_input.substr(i, 2) == "ln")
                 {
                     i += 1;
                     num_list.push_back(log(sous_calc(calc_input, ans, i)));
                     if (calc_input[i] == ')')
                         multiplication_implicite(APRES, operator_list, priorite_list, calc_input, priorite, i);
+                    break;
                 }
                 else if (i + 3 < calc_input_len)
                 {
@@ -210,21 +220,52 @@ double calc(string &calc_input, double &ans)
                         num_list.push_back(log10(sous_calc(calc_input, ans, i)));
                         if (calc_input[i] == ')')
                             multiplication_implicite(APRES, operator_list, priorite_list, calc_input, priorite, i);
+                        break;
                     }
-                    else
-                        throw runtime_error("Valeur entrée est incorrect !");
                 }
             }
-            else
-                throw runtime_error("Valeur entrée est incorrect !");
+            throw runtime_error("Valeur entrée est incorrect !");
+            break;
+        case 'c':
+            if (i + 2 < calc_input_len)
+            {
+                multiplication_implicite(AVANT, operator_list, priorite_list, calc_input, priorite, i);
+                if (calc_input.substr(i, 3) == "cos")
+                {
+                    i += 2;
+                    num_list.push_back(cos(sous_calc(calc_input, ans, i)));
+                    if (calc_input[i] == ')')
+                        multiplication_implicite(APRES, operator_list, priorite_list, calc_input, priorite, i);
+                    break;
+                }
+            }
+            throw runtime_error("Valeur entrée est incorrect !");
+            break;
+        case 't':
+            if (i + 2 < calc_input_len)
+            {
+                multiplication_implicite(AVANT, operator_list, priorite_list, calc_input, priorite, i);
+                if (calc_input.substr(i, 3) == "tan")
+                {
+                    i += 2;
+                    num_list.push_back(tan(sous_calc(calc_input, ans, i)));
+                    if (calc_input[i] == ')')
+                        multiplication_implicite(APRES, operator_list, priorite_list, calc_input, priorite, i);
+                    break;
+                }
+            }
+            throw runtime_error("Valeur entrée est incorrect !");
             break;
         case 'a':
             if (i + 2 < calc_input_len)
                 if (calc_input.substr(i, 3) == "ans")
                 {
                     num_list.push_back(ans);
+                    multiplication_implicite(AVANT_APRES, operator_list, priorite_list, calc_input, priorite, i);
                     i += 2;
+                    break;
                 }
+            throw runtime_error("Valeur entrée est incorrect !");
             break;
         default:
             throw runtime_error("Valeur entrée est incorrect !");
@@ -232,6 +273,7 @@ double calc(string &calc_input, double &ans)
         }
     }
 
+    /// DEBUT DEBUG
     /*for (int i = 0; i < num_list.size(); i++)
         cout << num_list[i] << ", ";
     cout << endl;
@@ -243,6 +285,7 @@ double calc(string &calc_input, double &ans)
     for (int i = 0; i < priorite_list.size(); i++)
         cout << priorite_list[i] << ", ";
     cout << endl;*/
+    /// FIN DEBUG
 
     if (num_list.size() != (operator_list.size() + 1))
         throw runtime_error("Le calcule est impossible !");
